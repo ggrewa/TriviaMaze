@@ -32,7 +32,7 @@ public class Questions {
     
     sb.append("Question: " + question + "/n");
     sb.append("Answer: " + answer + "/n");
-    sb.append("All answers: " + ArrayList.toString(answers));
+    sb.append("All answers: " + answers.toString());
     
     return sb.toString();
 
