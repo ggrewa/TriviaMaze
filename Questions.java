@@ -16,17 +16,21 @@ public class Questions {
     this.answers = answers;
   }
 
+  // getting a question.
   public String getQuestion() {
     return question;
   }
+  // getting the answer of the question.
   public String getAnswer() {
     return answer;
   }
 
+  //getting a list to collect all answers
   public ArrayList<String> getAnswers() {
     return answers;
   }
 
+  // visualize
   public String toString() {
     StringBuilder sb = new StringBuilder();
     
