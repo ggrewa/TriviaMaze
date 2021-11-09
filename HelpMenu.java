@@ -17,6 +17,6 @@ public class HelpMenu {
     }
     
     public String toString() {
-      return "Instructions: " + intructions + /n + "Hints = " + hints;   
+      return "++ HELP MENU ++" + /n + "Instructions: " + intructions + /n + "Hints = " + hints;   
     }
 }
