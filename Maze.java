@@ -12,6 +12,9 @@ public class Maze implements Serializable {
     this.rows = rows;
     this.cols = cols;
   }
+  public static boolean homeScreen() {
+    Interface.printHomeScreen();
+  }
   public ArrayList rooms (int row, int col) {
     //
   }
@@ -19,4 +22,12 @@ public class Maze implements Serializable {
   }
   public void movement(char direction) {
   } 
+  public static boolean helpMenu() {
+    Interface.printHelpMenu();
+  }
+  @override
+  public static String toString () {
+    StringBuilder sb = new StringBuilder;
+    return sb.toString();
+  }
 }
