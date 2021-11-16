@@ -5,17 +5,14 @@ public class HelpMenu {
     private String hints;
     
     public HelpMenu() {
-        this.instructions = instructions;
-        this.hints = hints;
+        DataBase db = new DataBase();
+        instructions = db.getInstructions();
     }
     
     public String getInstructions() {
         return instructions;
     }
-    public String getHints() {
-        return hints;
-    }
-    
+
     public String toString() {
       return "++ HELP MENU ++" + /n + "Instructions: " + intructions + /n + "Hints = " + hints;   
     }
