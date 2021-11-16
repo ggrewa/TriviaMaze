@@ -35,6 +35,9 @@ public class Maze implements Serializable {
   @override
   public static String toString () {
     StringBuilder sb = new StringBuilder;
+    for(int i = 0; i < maze.size(); i++) {
+      sb.append(maze.charAt(i)) + "\n");
+    }
     return sb.toString();
   }
 }
