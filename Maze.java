@@ -17,6 +17,6 @@ public class Maze implements Serializable {
   }
   public ArrayList maze (int row, int col) {
   }
-  public void movement() {
+  public void movement(char direction) {
   } 
 }
