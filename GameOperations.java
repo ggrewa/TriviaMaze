@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class GameOperations implements Serializable {
+  private static final long serialVersionUID = 1L;
   private static numMoves;
   
   public static void newGame(Maze maze) {
