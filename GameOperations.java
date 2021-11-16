@@ -10,6 +10,8 @@ public class GameOperations implements Serializable {
   public static void newGame(Maze maze) {
     
   }
-  
+  public static void PlayGame(Maze maze) {
+    
+  }  
 }
 
