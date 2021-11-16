@@ -15,6 +15,9 @@ public class Maze implements Serializable {
   public static boolean homeScreen() {
     Interface.printHomeScreen();
   }
+  public static boolean helpMenu() {
+    Interface.printHelpMenu();
+  }
   public ArrayList rooms (int row, int col) {
     //
   }
@@ -22,8 +25,12 @@ public class Maze implements Serializable {
   }
   public void movement(char direction) {
   } 
-  public static boolean helpMenu() {
-    Interface.printHelpMenu();
+  public static void status(boolean result) {
+    if (!result) {
+      System.out.println("You got stucked!");
+    } else {
+       System.out.println("You completed the maze!");
+    }
   }
   @override
   public static String toString () {
