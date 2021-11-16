@@ -1,5 +1,3 @@
-package Interface;
-
 import Questions.*;
 import Maze.Maze;
 
