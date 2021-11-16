@@ -1,7 +1,7 @@
 public class Interface {
   
   public static void printHomeScreen() {
-    System.out.println("++ TRIVIA MAZE ++");
+    System.out.println("++ Welcome to TRIVIA MAZE ++");
     //System.out.println(" ");
     //System.out.println();
   }
