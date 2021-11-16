@@ -1,3 +1,6 @@
+import java.util.*;
+import Maze.Maze;
+
 public class Interface {
   priavte static Scanner scanner = new Scanner(System.in);
   
@@ -22,8 +25,8 @@ public class Interface {
   
   public static void printHelpMenu() {
     System.out.println("++ HELP MENU ++");
-    System.out.println("InsTructions:");
     System.out.println();
+    System.out.println("InsTructions:");
     System.out.println("'L' shows locked doors");
     System.out.println("'X' shows the room you are in" + "\n");
     System.out.println();
