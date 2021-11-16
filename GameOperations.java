@@ -13,5 +13,15 @@ public class GameOperations implements Serializable {
   public static void PlayGame(Maze maze) {
     
   }  
+  public static void exitGame(Maze maze) {
+    
+  }
+  public static void saveGame(Maze maze) {
+    
+  }
+  
+  public static void loadGame(Maze maze) {
+    
+  }
 }
 
