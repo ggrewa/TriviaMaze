@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import maze.Maze;
 
 
-public class GameOperations implements Serializable {
+public class Game implements Serializable {
   private static final long serialVersionUID = 1L;
   private static numMoves;
   
