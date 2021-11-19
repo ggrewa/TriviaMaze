@@ -51,4 +51,8 @@ public class Interface {
     System.out.println("'X' shows the room you are in" + "\n");
     System.out.println();
   }
+  
+  public static void printExit() {
+    System.out.println("You Exit the game!);
+  }
 }
