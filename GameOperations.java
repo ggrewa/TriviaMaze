@@ -24,14 +24,45 @@ public class GameOperations implements Serializable {
     }
   }  
   public static void exitGame(Maze maze) {
-    
+    try {
+      
+    } catch (IOException e) {
+      
+    }
   }
   public static void saveGame(Maze maze) {
-    
+    try {
+      FileInputStream file = new FileInputStream("GameSaved.ser");
+      ObjectInputStream putIn = new ObjectInputStream(file);
+      
+      out.writeObject(maze);
+      out.close();
+      fileOut.close();
+      System.out.println("Game saved! we'll keep your secrets safe!");   
+      
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
   
-  public static void loadGame(Maze maze) {
-    
+  public static void loadGame() {
+    try {
+      FileInputStream file = new FileInputStream("GameLoaded.ser");
+      ObjectInputStream putIn = new ObjectInputStream(file);
+            
+      myMaze = (Maze)putIn.readObject();
+      putIn.close();
+      file.close();
+      System.out.println("Game loaded! Taking you back to the magic!");                      
+        
+      } catch (IOException e) {
+         System.out.print("Game could not be loaded. Need more pixie dust °o°!");
+         playGame();
+      } catch (ClassNotFoundException n) {
+         System.out.print("Game not found. Need more pixie dust °o°!");
+         n.printStackTrace();
+         playGame();
+     }  
   }
 }
 
