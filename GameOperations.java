@@ -1,6 +1,13 @@
 import java.io.Serializable;
 import java.util.*;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import maze.Maze;
+
+
 public class GameOperations implements Serializable {
   private static final long serialVersionUID = 1L;
   private static numMoves;
@@ -19,17 +26,12 @@ public class GameOperations implements Serializable {
       loadGame();
     } else if (homeSelection.equals("3")) {
       Interface.printHelpMenu();
+    } else if (homeSelection.equals("4")) {
+      Interface.printExit();
     } else {
       System.out.println("Invalid entry!");
     }
   }  
-  public static void exitGame(Maze maze) {
-    try {
-      
-    } catch (IOException e) {
-      
-    }
-  }
   public static void saveGame(Maze maze) {
     try {
       FileInputStream file = new FileInputStream("GameSaved.ser");
