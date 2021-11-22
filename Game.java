@@ -19,8 +19,8 @@ public class Game implements Serializable {
     
   }
   public static void PlayGame(Maze maze) {
-    Interface.printHomeScreen();
-    String homeSelection = Interface.getUserSelectionAtHome();
+    Interface.printHomeMenu();
+    String homeSelection = MenuOptions.getHoneSelection();
     
     if (homeSelection.equals("1")) {
       Maze maze = new Maze();
