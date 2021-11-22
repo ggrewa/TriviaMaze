@@ -63,7 +63,7 @@ public class Interface {
   }
   
   public static void printExit() {
-    System.out.println("You Exit the game!);
+    System.out.println("You Exit the game!");
     printGameOutro();
   }
                        
