@@ -1,5 +1,5 @@
 public class Main {
-  public static void main(String[] args) {\
-    GameOperations.PlayGame();
-  }
+    public static void main(String[] args) {
+        Game.PlayGame();
+    }
 }
