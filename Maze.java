@@ -5,12 +5,16 @@ public class Maze implements Serializable {
   private static final long serialVersionUID = 1L;
   private ArrayList[][] rooms;
   private int rows;
+  //default number of rows
+  private int rowsIndex = 4;
   private int cols;
+  //default number of cols
+  private int colsIndex = 4;
   private ArrayList[][] maze;
   
   public Maze() {
-    this.rows = rows;
-    this.cols = cols;
+    this.rowsIndex = rowsIndex;
+    this.colsIndex = colsIndex;
   }
   public static boolean homeScreen() {
     Interface.printHomeScreen();
@@ -19,12 +23,25 @@ public class Maze implements Serializable {
     Interface.printHelpMenu();
   }
   public ArrayList rooms (int row, int col) {
-    //
+    
   }
   public ArrayList maze (int row, int col) {
+    
   }
+  
   public void movement(char direction) {
+     
+    
   } 
+  
+  public void checkLocation(int row, int col) {
+    if(row < 0 || col < 0 || row >= rooms.length || col >= rooms.length) {
+      throw new IllegalArgumentException("You are out of bounds");
+    }
+    rowsIndex = row;
+    colsIndex = col;
+  }
+  
   public static void status(boolean result) {
     if (!result) {
       System.out.println("You got stucked!");
