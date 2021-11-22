@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Interface {
+public class MenuOptions {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void printHomeMenu() {
