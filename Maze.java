@@ -47,6 +47,23 @@ public class Maze implements Serializable {
         
     }
     
+    public int getRows() {
+        return rows;
+    }
+    
+    public int getCols() {
+        return cols;
+    }
+    
+    public void setRowsAndCols(int rows, int cols) {
+        myRows = rows;
+        myCols = cols;
+    }
+    
+    public Room getCurrentRoom() {
+        return maze[rows][cols];
+    }
+    
     public void checkLocation(int row, int col) {
         if(row < 0 || col < 0 || row >= rooms.length || col >= rooms.length) {
             throw new IllegalArgumentException("You are out of bounds");
