@@ -16,12 +16,15 @@ public class Maze implements Serializable {
         this.rowsIndex = rowsIndex;
         this.colsIndex = colsIndex;
     }
-    public static boolean homeScreen() {
-        Interface.printHomeScreen();
+    public Maze(int rows, int cols) {
+        if(rows < 0 || cols < 0 || rows != cols) {
+            throw new IllegalArgumentException("The maze is not in the specified dimension");
+        }
+        rowsIndex = 0;
+        colsIndex = 0;
+        
     }
-    public static boolean helpMenu() {
-        Interface.printHelpMenu();
-    }
+
     public ArrayList rooms (int row, int col) {
 
     }
