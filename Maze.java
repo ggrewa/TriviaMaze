@@ -10,7 +10,7 @@ public class Maze implements Serializable {
     private int cols;
     //default number of cols
     private int colsIndex;
-    private ArrayList[][] maze;
+    private Room[][] maze;
     
     public Maze() {
         if(rows < 0 || cols < 0 || rows != cols) {
