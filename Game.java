@@ -19,7 +19,7 @@ public class Game implements Serializable {
 
     }
     public static void PlayGame(Maze maze) {
-        Interface.printHomeMenu();
+        MenuOptions.printHomeMenu();
         String homeSelection = MenuOptions.getHoneSelection();
 
         if (homeSelection.equals("1")) {
@@ -28,9 +28,9 @@ public class Game implements Serializable {
         } else if (homeSelection.equals("2")) {
             loadGame();
         } else if (homeSelection.equals("3")) {
-            Interface.printHelpMenu();
+            MenuOptions.printHelpMenu();
         } else if (homeSelection.equals("4")) {
-            Interface.printExit();
+            MenuOptions.printExit();
         } else {
             System.out.println("Invalid entry!");
         }
