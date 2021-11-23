@@ -43,7 +43,7 @@ public class Maze implements Serializable {
         return rooms;
 
     }
-    public ArrayList maze (int rows, int cols) {
+    public void buildMaze (int rows, int cols) {
         
     }
     
