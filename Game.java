@@ -13,11 +13,7 @@ import maze.Maze;
 
 public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static numMoves;
 
-    public static void newGame(Maze maze) {
-
-    }
     public static void PlayGame(Maze maze) {
         MenuOptions.printHomeMenu();
         String homeSelection = MenuOptions.getHoneSelection();
