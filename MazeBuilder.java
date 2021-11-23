@@ -5,12 +5,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class MazeBuilder {
+public class MazeBuilder implements Serializable {
         
+ 
+    private static final long serialVersionUID = 1L;
+
         private  Room[][] myMaze;
       
-        
+        private Room myRoom;
         
          
         private int myPlayerRow;
@@ -19,6 +23,8 @@ public class MazeBuilder {
         
         public MazeBuilder() {
             myMaze = new Room[4][4];
+            myPlayerRow = 0;
+            myPlayerColumn = 0;
   
         }
         
@@ -42,56 +48,13 @@ public class MazeBuilder {
             }
             if (myMaze.length < 4) {
                 throw new IllegalArgumentException(message);
-            }
-            
-            
-
-        
+            }        
         }
         
         public Room[][] getMaze() {
             return myMaze;
         }
-        /**
-         * https://www.tutorialspoint.com/java/java_serialization.htm
-         */
-        public void saveGame() {
-            try {
-                     FileOutputStream file = new FileOutputStream("GameSaved.ser");
-                     ObjectOutputStream putOut = new ObjectOutputStream(file);
-                     putOut.writeObject(myMaze);
-                     putOut.close();
-                     file.close();
-                     System.out.println("The game has been saved. ");
-            } catch (IOException i) {
-                System.out.println("The game hasn't been saved.");
-            
-            }
-        }
-        
-        public void loadGame() {
-            try {
-                Room[][] maze = null;
-                FileInputStream file = new FileInputStream("GameSaved.ser");
-                ObjectInputStream putIn = new ObjectInputStream(file);
-                maze = (Room[][]) putIn.readObject();
-                putIn.close();
-                file.close();
-                System.out.println("Game loaded!");
-                MazeBuilder game = new MazeBuilder(maze);
-                //game.startGame(); //method                       
-            
-            } catch (IOException i) {
-                System.out.print("Game could not be downloaded.");
-                return;
-            } catch (ClassNotFoundException n) {
-                System.out.print("Game not found.");
-                n.printStackTrace();
-                return;
-            
-            }
-        
-        }
+
         
         //public void startGame() {
             //while
@@ -99,13 +62,13 @@ public class MazeBuilder {
         //}
         public void borderRooms() {
             for (int j =1; j <= 4; j++) {
-                myMaze[1][j].getMyNorth().setDoor(Door.myWall);
+                myMaze[0][j].getMyNorth().setDoor(Door.myWall);
             }
             for (int j = 1; j <= 4; j++) {
                 myMaze[4][j].getMySouth().setDoor(Door.myWall);
             }
             for (int i = 1; i <= 4; i++) {
-                myMaze[i][1].getMyEast().setDoor(Door.myWall);
+                myMaze[i][0].getMyEast().setDoor(Door.myWall);
             }
             for (int i = 1; i <= 4; i++) {
                 myMaze[i][4].getmyWest().setDoor(Door.myWall);
@@ -113,8 +76,74 @@ public class MazeBuilder {
          
         }
         
+        public void playerCanMove(String currentDir) {
+            Door currentDoor = null;
+            if(currentDir.toLowerCase().equals("North")) {
+                currentDoor = myMaze[myPlayerRow][myPlayerColumn].getNorth();
+            }
+            else if (currentDir.toLowerCase().equals("East")) {
+                currentDoor = myMaze[myPlayerRow][myPlayerColumn].getEast();
+            }
+            else if (currentDir.toLowerCase().equals("West")) {
+                currentDoor = myMaze[myPlayerRow][myPlayerColumn].getWest();
+            }
+            else if (currentDir.toLowerCase().equals("South")) {
+                currentDoor = myMaze[myPlayerRow][myPlayerColumn].getSouth();
+            }
+        }
+//        avaliable doors for user in a room
+//        game over and if game is won
+//      } avalable doors and position
 
+        public int xCor() {
+            return myPlayerRow;
+        }
+        public int yCor() {
+            return myPlayerColumn;
+        }
+        public void move() {
+            if (playerMoveNorth() && Door.getWall() && playerCanMove(currentDir)) { //for border walls
+                myPlayerRow--;
+            } else if (playerMoveEast() && Door.getWall() && playerCanMove(currentDir)) {
+                myPlayerColumn++;
+            } else if (playerMoveWest() && Door.getWall() && playerCanMove(currentDir)) {
+                myPlayerColumn--;
+            } else if (playerMoveSouth() && Door.getWall() && playerCanMove(currentDir)) {
+                myPlayerRow++;
+            }
+        }
         
-        
-
+        public boolean playerMoveNorth() {
+            if (myPlayerRow - 1 > -1 && Question.checkAnswer()) {
+                return true;
+            } else {
+                return false;
+            }
+          
+        }
+        public boolean playerMoveEast() {
+            if (myPlayerColumn + 1 <= 5 && Question.checkAnswer()) {
+                return true;
+            } else {
+                return false;
+            }
+          
+        }
+        public boolean playerMoveWest() {
+            if (myPlayerColumn - 1 > -1 && Question.checkAnswer()) {
+                return true;
+            } else {
+                return false;
+            }
+          
+          }  
+          
+        public boolean playerMoveSouth() {
+            if (myPlayerRow + 1 <= 5 && Question.checkAnswer()) {
+                return true;
+            } else {
+                return false;
+            }
+          
+          }      
 }
