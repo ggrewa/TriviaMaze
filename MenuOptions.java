@@ -163,5 +163,37 @@ public class MenuOptions {
         System.out.println("                \\__    __/      ~-__   __--~\\\\");
         System.out.println("                   ~~\"~             ~~~\n");
     }
+    
+    public static void printGameWon() {
+    	System.out.println("                ,n888888n,");
+	    System.out.println("               .8888888888b");
+	    System.out.println("               888888888888nd8P~''8g,");
+	    System.out.println("               88888888888888   _  `'~\\.  .n.");
+	    System.out.println("               `Y888888888888. / _  |~\\ (8\"8b");
+	    System.out.println("              ,nnn.. 8888888b.  |  \\ \\m\\|8888P");
+	    System.out.println("            ,d8888888888888888b. \\8b|.\\P~ ~P8~");
+	   	System.out.println("            888888888888888P~~_~  `8B_|      |");
+	   	System.out.println("            ~888888888~'8'   d8.    ~      _/");
+	   	System.out.println("             ~Y8888P'   ~\\ | |~|~b,__ __--~");
+	   	System.out.println("         --~~\\   ,d8888888b.\\`\\_/ __/~");
+	   	System.out.println("              \\_ d88888888888b\\_-~8888888bn.");
+	   	System.out.println("                \\8888P   \"Y888888888888\"888888bn.");
+	   	System.out.println("            /~'\\_\"__)      \"d88888888P,-~~-~888");
+	   	System.out.println("           /  / )   ~\\     ,888888/~' /  / / 8'");
+	   	System.out.println("        .-(  / / / |) )-----------(/ ~  / /  |---.");
+	   	System.out.println(" ______ | (   '    /_/ Disney Trivia(__/     /   |_______");
+	   	System.out.println(" \\      |   (_(_ ( /~      Maze      \\___/_/'    |      /");
+	   	System.out.println("  \\     |       You won! See you later pal!      |     /");
+	   	System.out.println("  /     (________________________________________)     \\");
+	   	System.out.println(" /__________)     __--|~mb  ,g8888b.         (__________\\");
+	   	System.out.println("               _/    8888b(.8P\"~'~---__");
+	   	System.out.println("              /       ~~~| / ,/~~~~--, `\\");
+	   	System.out.println("             (       ~\\,_) (/         ~-_`\\\\");
+	    System.out.println("              \\  -__---~._ \\             ~\\\\");
+	   	System.out.println("              (           )\\\\              ))\\");
+	   	System.out.println("              `\\          )  \"-_           `|\\");
+	 	System.out.println("                \\__    __/      ~-__   __--~\\\\");
+	   	System.out.println("                   ~~\"~             ~~~\n");
+    }
 }
 
