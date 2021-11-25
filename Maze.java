@@ -11,65 +11,89 @@ public class Maze implements Serializable {
     //default number of cols
     private int colsIndex;
     private Room[][] maze;
-    
+    private Door currDoor;
+
     public Maze() {
         if(rows < 0 || cols < 0 || rows != cols) {
             throw new IllegalArgumentException("The maze is not in the specified dimension");
         }
-        maze = new Room[4][4];
+        rows = 4;
+        cols = 4;
+        maze = new Room[rows][cols];
         rowsIndex = 0;
         colsIndex = 0;
-        buildRooms();
-        buildMaze();
     }
 
-    public void buildRooms (int rows, int cols) {
-        Door North = new Door();
-        Door South = new Door();
-        Door East = new Door();
-        Door West = new Door();
+    public void buildRooms() {
         for (int i = 0; i < rows; i++) {
-            for(int j = 0; j < cols; j++) {
-                boolean north = false;
-                boolean south = false;
-                boolean east = false;
-                boolean west = false;
-                
-                if(cols > 0) {
-                    North = maze[rows][cols - 1].getDoor(1);
-                }
-            }
+            maze[i][0].Room.getEast().setDoor(Door.getWall());
         }
-        return rooms;
-
+        for(int j = 0; j < cols; j++) {
+            maze[0][j].Room.getNorth().setDoor(Door.getWall());
+        }
+        for (int i = 0; i < rows; i++) {
+            maze[i][cols].Room.getWest().setDoor(Door.getWall());
+        }
+        for(int j = 0; j < cols; j++) {
+            maze[rows][j].Room.getSouth().setDoor(Door.getWall());
+        }
     }
     public void buildMaze (int rows, int cols) {
-        
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            for(int j = 0; j < cols; j++) {
+                maze = new Room();
+            }
+        }
+    }
+
+    public Room[][] getCurrentRoom() {
+        return room;
     }
     
-    public int getRows() {
-        return rows;
+    public Room[][] getMaze() {
+        return maze;
     }
-    
-    public int getCols() {
-        return cols;
-    }
-    
-    public void setRowsAndCols(int rows, int cols) {
-        myRows = rows;
-        myCols = cols;
-    }
-    
-    public Room getCurrentRoom() {
-        return maze[rows][cols];
-    }
-    
+
     public void checkLocation(int row, int col) {
         if(row < 0 || col < 0 || row >= rooms.length || col >= rooms.length) {
             throw new IllegalArgumentException("You are out of bounds");
         }
         rowsIndex = row;
         colsIndex = col;
+    }
+    
+    public void movement() {
+        if (Movement.North() && Door.getWall() && canMoveNorth(currentDir)) { 
+            rowsIndex--;
+        } else if (Movement.South() && Door.getWall() && canMoveSouth(currentDir)) {
+            rowsIndex++;
+        } else if (Movement.West() && Door.getWall() && canMoveWest(currentDir)) {
+            colsIndex--;
+        } else if (Movement.East() && Door.getWall() && canMoveEast(currentDir)) {
+            colsIndex++;
+        }
+    }
+
+    public void canMoveNorth(String currentDir) {
+        if (currentDir.toLowerCase().equals("N")) {
+            currDoor = maze[rowsIndex][colsIndex].getNorth();
+        }
+    }
+    public void canMoveSouth(String currentDir) {
+        if (currentDir.toLowerCase().equals("S")) {
+            currDoor = maze[rowsIndex][colsIndex].getSouth();
+        }
+    }
+    public void canMoveWest(String currentDir) {
+        if (currentDir.toLowerCase().equals("W")) {
+            currDoor = maze[rowsIndex][colsIndex].getWest();
+        }
+    }
+    public void canMoveEast(String currentDir) {
+        if (currentDir.toLowerCase().equals("E")) {
+            currDoor = maze[rowsIndex][colsIndex].getEast();
+        }
     }
 
     public static void status(boolean result) {
@@ -79,6 +103,7 @@ public class Maze implements Serializable {
             System.out.println("You completed the maze!");
         }
     }
+    
     @override
     public static String toString () {
         StringBuilder sb = new StringBuilder;
