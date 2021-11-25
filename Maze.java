@@ -64,13 +64,13 @@ public class Maze implements Serializable {
     }
     
     public void movement() {
-        if (Movement.North() && Door.getWall() && canMoveNorth(currentDir)) { 
+        if (Game.North() && Door.getWall() && canMoveNorth(currentDir)) { 
             rowsIndex--;
-        } else if (Movement.South() && Door.getWall() && canMoveSouth(currentDir)) {
+        } else if (Game.South() && Door.getWall() && canMoveSouth(currentDir)) {
             rowsIndex++;
-        } else if (Movement.West() && Door.getWall() && canMoveWest(currentDir)) {
+        } else if (Game.West() && Door.getWall() && canMoveWest(currentDir)) {
             colsIndex--;
-        } else if (Movement.East() && Door.getWall() && canMoveEast(currentDir)) {
+        } else if (Game.East() && Door.getWall() && canMoveEast(currentDir)) {
             colsIndex++;
         }
     }
