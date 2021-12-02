@@ -74,6 +74,16 @@ class DoorTest extends Door {
     }
 
     @Test
+    void testGetHint() {
+        DataBase data = new DataBase();
+        assertEquals("Elsa and Anna are a part of this movie.", data.getHint(1));
+        assertEquals("Another word for corn dogs.", data.getHint(16));
+        assertEquals("His name starts with the letter 'n'.", data.getHint(32));
+        assertEquals("How do you feel when you get hurt or sick?", data.getHint(4));
+        assertEquals("I love the food at Joey's!", data.getHint(6));
+    }
+
+    @Test
     void testAnswerDoorQuestion() {
         DataBase data = new DataBase();
         assertEquals("frozen", data.getAnswer(1));
