@@ -5,9 +5,21 @@ import database.Question;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test for Maze class.
+ *
+ * @author Gurleen Grewal, Tarnveer Mangat, and Abdullah Enes
+ * @version Autumn 2021
+ *
+ */
 class MazeTest {
+    private final InputStream IS = System.in;
+    //private final PrintStream PS = System.out;
 
     private Maze myMaze;
     private Door myDoor;
@@ -15,18 +27,31 @@ class MazeTest {
     private Question myQuestion;
     private DataBase data;
     private Room[][] maze;
+    //private Scanner myScan = new Scanner(System.in);
 
+    transient private static final String ANSI_RESET = "\u001B[0m";
 
+    transient private static final String ANSI_RED = "\033[0;31m";
+
+    transient private static final String ANSI_BLUE = "\u001B[34m";
+
+    //private Scanner myScan = new Scanner(System.in);
+    /**
+     * @throws java.lang.Exception
+     */
     @BeforeEach
-    void setUp() {
+     void setUp() throws Exception {
         myMaze = new Maze();
         myDoor = new Door();
         myRoom = new Room();
-        myQuestion = new Question();
+        myQuestion = new Question(2);
         data = new DataBase();
         maze = myMaze.getMaze();
     }
 
+    /**
+     * Test for buildRooms method at Maze class
+     */
     @Test
     void testBuildRooms() {
         myMaze.buildRooms();
@@ -37,6 +62,10 @@ class MazeTest {
         }
     }
 
+
+    /**
+     * Test for setWalls method at Maze class
+     */
     @Test
     void testSetWalls() {
         myMaze.buildRooms();
@@ -53,6 +82,10 @@ class MazeTest {
         maze[3][maze.length-1].getDoor("east").setWall(false);
         assertEquals(false, maze[3][maze.length-1].getDoor("east").getWall());
     }
+
+    /**
+     * Test for joinDoors method at Maze class
+     */
     @Test
     void testJoinDoors() {
         myMaze.buildRooms();
@@ -65,6 +98,37 @@ class MazeTest {
         }
     }
 
+    /**
+     * Test for move method at Maze class for in case the answer is true
+     */
+    @Test
+    void testMoveTrue() {
+        myMaze.buildRooms();
+        String input = "yes";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        myRoom.getDoor("north").setQuestionAnswered(true);
+        myRoom.getDoor("north").setDoorlocked(true);
+        myRoom.getDoor("north").setWall(true);
+        myMaze.move("north");
+        //assertEquals(false,  myRoom.getDoor("north").getQuestion().checkAnswer(data.getAnswer(2)));
+    }
+
+    /**
+     * Test for move method at Maze class for in case the answer is false
+     */
+    @Test
+    void testMoveFalse() {
+        myMaze.buildRooms();
+        String input = data.getAnswer(2);
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        myMaze.move("north");
+        //assertEquals(false,  myRoom.getDoor("north").getQuestion().checkAnswer(data.getAnswer(2)));
+    }
+
+
+    /**
+     * Test for moveUser method at Maze class
+     */
     @Test
     void testMoveUser() {
         myMaze.buildRooms();
@@ -85,6 +149,9 @@ class MazeTest {
         assertEquals(0, myMaze.getLocation()[1]);
     }
 
+    /**
+     * Test for getHintNum method at Maze class
+     */
     @Test
     void testGetHintNum() {
         myMaze.buildRooms();
@@ -92,6 +159,9 @@ class MazeTest {
         assertEquals(2, myMaze.getHintNum());
     }
 
+    /**
+     * Test for setHintNum method at Maze class
+     */
     @Test
     void testSetHintNum() {
         myMaze.buildRooms();
@@ -99,6 +169,37 @@ class MazeTest {
         assertEquals(16, myMaze.getHintNum());
     }
 
+    /**
+     * Test for getHint method at Maze class in case the answer is "yes"
+     */
+    @Test
+    void testGetHint() {
+        myMaze.buildRooms();
+        myMaze.setHintNum(3);
+        String input = "yes";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        myMaze.getHint("north");
+        assertEquals(2, myMaze.getHintNum());
+        System.setIn(IS);
+    }
+
+    /**
+     * Test for getHint method at Maze class in case the answer is "no"
+     */
+    @Test
+    void testGetHintFalse() {
+        myMaze.buildRooms();
+        myMaze.setHintNum(3);
+        String input = "n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        myMaze.getHint("north");
+        assertEquals(3, myMaze.getHintNum());
+        System.setIn(IS);
+    }
+
+    /**
+     * Test for getLocation method at Maze class
+     */
     @Test
     void testGetLocation() {
         myMaze.buildRooms();
@@ -107,6 +208,9 @@ class MazeTest {
         assertEquals(0,myMaze.getLocation()[1]);
     }
 
+    /**
+     * Test for setLocation method at Maze class
+     */
     @Test
     void testSetLocation() {
         myMaze.buildRooms();
@@ -115,12 +219,18 @@ class MazeTest {
         assertEquals(2,myMaze.getLocation()[1]);
     }
 
+    /**
+     * Test for isGameOver method at Maze class
+     */
     @Test
     void testIsGameOver() {
         myMaze.buildRooms();
         assertEquals(false, myMaze.getCurrentRoom().isRoomLocked());
     }
 
+    /**
+     * Test for isGameWon method at Maze class
+     */
     @Test
     void testIsGameWon() {
         myMaze.buildRooms();
